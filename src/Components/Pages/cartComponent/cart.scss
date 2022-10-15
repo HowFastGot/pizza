@@ -1,0 +1,269 @@
+.cart-row {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+
+     &__title {
+          position: relative;
+          padding-left: 47px;
+
+          &::before {
+               display: inline-block;
+               content: "";
+               position: absolute;
+               left: 0px;
+               top: 0;
+               width: 30px;
+               height: 30px;
+               background: url("../../../resources/cart/trash.svg") no-repeat center/cover;
+          }
+     }
+
+     &__clean-cart {
+          position: relative;
+          padding-left: 29px;
+          font-family: "Proxi_Reg";
+          color: #B6B6B6;
+          cursor: pointer;
+          transition: all 0.3s ease 0s;
+
+          &:hover {
+               color: #696464;
+               transform: scale(1.2);
+
+               &::before {
+                    transform: scale(1.2);
+               }
+          }
+
+          &::before {
+               display: inline-block;
+               content: "";
+               position: absolute;
+               left: 0px;
+               top: -1px;
+               transform: translateY(-10%);
+               width: 20px;
+               height: 20px;
+               background: url("../../../resources/cart/trash.svg") no-repeat center/cover;
+               transition: all 0.3s ease 0s;
+               pointer-events: none;
+
+          }
+     }
+}
+
+//==================================================================================
+.product-component {
+
+     &__component-block {
+          display: grid;
+          grid-template-columns: 55% 25% 16% auto;
+          align-items: center;
+          padding: 30px 0;
+          border-top: 1px solid #F4F4F4;
+     }
+
+     &__info-block {
+          display: flex;
+          align-items: center;
+          gap: 15px;
+     }
+
+     &__counter {
+          display: flex;
+          align-items: center;
+     }
+
+     &__total-prise {
+          @extend .info-block__name
+     }
+
+     &__close-btn {
+          position: relative;
+          color: #D7D7D7 !important;
+          border: 2px solid #D7D7D7 !important;
+          transition: all 0.3s ease 0s;
+
+          @extend .counter-block__btn;
+
+          &::before {
+               display: inline-block;
+               content: "x";
+               position: absolute;
+               font-size: 18px;
+               left: 4px;
+               top: 2px;
+               width: 20px;
+               height: 20px;
+               pointer-events: none;
+          }
+
+          &:hover {
+               color: #9c7a7a !important;
+               border: 2px solid #9c7a7a !important;
+          }
+
+     }
+}
+
+.info-block {
+     &__text-block {}
+
+     &__icon {
+          width: 100px;
+
+          img {
+               width: 100%;
+          }
+     }
+
+     &__name {
+          font-size: 22px;
+          letter-spacing: 0.01em;
+     }
+
+     &__dough {
+          margin-top: 5px;
+          font-size: 18px;
+          color: #8D8D8D;
+          font-family: "Proxi_Reg";
+     }
+}
+
+.counter-block {
+
+     &__btn {
+          width: 32px;
+          height: 32px;
+          color: #FE5F1E;
+          font-size: 26px;
+          background-color: inherit;
+          border-radius: 50%;
+          border: 2px solid #FE5F1E;
+          transition: all 0.3s ease 0s;
+
+          &:first-child {
+               position: relative;
+
+               &::before {
+                    display: inline-block;
+                    content: "-";
+                    position: absolute;
+                    left: 4px;
+                    top: -3px;
+                    width: 20px;
+                    height: 20px;
+                    pointer-events: none;
+               }
+          }
+
+          &:hover {
+               transform: scale(1.2);
+          }
+     }
+
+     &__count {
+          padding: 0 12px;
+          font-size: 22px;
+          line-height: 32px;
+     }
+}
+
+//==================================================================================
+.payment-info {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+
+     &__total-goods {
+          font-size: 22px;
+          font-family: "Proxi_Reg";
+
+          span {
+               font-family: "Proxi_ExB";
+          }
+
+     }
+
+     &__total-prise {
+          @extend .payment-info__total-goods;
+
+          span {
+               color: #FE5F1E;
+          }
+     }
+}
+
+.action {
+     padding: 30px 0 0 0;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+
+     &__btn {
+          flex: 0 1 211px;
+          font-size: 16px;
+          border-radius: 30px;
+          padding: 15px 40px;
+          transition: all 0.3s ease 0s;
+
+          &:hover {
+               transform: scale(1.1);
+
+               span {
+                    left: 10px;
+               }
+          }
+
+          &_go-back {
+               position: relative;
+               color: #D3D3D3;
+               border: 1px solid #D3D3D3;
+
+               span {
+                    position: absolute;
+                    left: 25px;
+                    transition: all 0.3s ease 0s;
+               }
+          }
+
+          &_pay {
+               color: #FFFFFF;
+               border: 1px solid #FE5F1E;
+               background-color: #FE5F1E;
+          }
+     }
+}
+
+//==================================================================================
+.empty-content {
+     text-align: center;
+
+     &__title {
+          font-size: 32px;
+     }
+
+     &__text {
+          font-family: "Proxi_Reg";
+          font-size: 18px;
+          line-height: 145.4%;
+          /* or 26px */
+
+          text-align: center;
+          letter-spacing: 0.01em;
+
+          color: #777777;
+          white-space: pre-line;
+     }
+
+     &__photo {
+          margin: 50px 0px 75px 0px;
+     }
+
+     &__action {
+          font-family: "Proxi_B";
+          color: #FFFFFF !important;
+          background-color: #000;
+     }
+}

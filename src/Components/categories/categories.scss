@@ -1,0 +1,29 @@
+.filter-row {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+
+     &__list {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex: 0 1 65%;
+     }
+
+     &__item {
+          padding: 15px 30px;
+          background-color: #F9F9F9;
+          text-align: center;
+          border-radius: 30px;
+          transition: all 0.3s ease 0s;
+          cursor: pointer;
+
+          &:hover,
+          &.active {
+               background-color: #000;
+               color: #ffff;
+          }
+     }
+
+     &__select-block {}
+}

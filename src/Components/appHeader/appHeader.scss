@@ -1,0 +1,117 @@
+.header {
+     border-bottom: 2px solid #F7F7F7;
+
+     &__content {}
+
+     &__pizza-row {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 20px 5px 0px 5px
+     }
+}
+
+.pizza-header {
+
+     &__left-side {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 17px;
+          padding: 10px 10px 10px 0;
+     }
+
+     &__logo {
+          width: 38px;
+          height: 43px;
+          padding: 5px 0;
+          cursor: pointer;
+
+          img {
+               width: 100%;
+               height: 100%;
+          }
+
+
+     }
+
+     &__text {
+          cursor: pointer;
+     }
+
+     &__title {
+          font-family: "Proxi_ExB";
+          font-size: 24px;
+
+          @media (max-width:520px) {
+               font-size: 16px;
+
+          }
+     }
+
+     &__subtitle {
+          margin: 0;
+          font-size: 16px;
+          font-family: "Proxi_Reg";
+          color: #7B7B7B;
+
+          @media (max-width:520px) {
+               font-size: 13px;
+          }
+
+          @media (max-width:360px) {
+               white-space: pre-line;
+          }
+     }
+
+     &__right-side {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 15px 23px;
+          background-color: #FE5F1E;
+          color: #ffff;
+          border-radius: 30px;
+
+          @media (max-width:520px) {
+               flex-direction: column-reverse;
+               padding: 7px 5px;
+               text-align: center;
+               border-radius: 15px;
+          }
+     }
+
+     &__price {
+          padding-right: 15px;
+          border-right: 1px solid rgba(255, 255, 255, 0.25);
+
+          @media (max-width:520px) {
+               padding: 10px 0 0 0;
+               border-right: 0;
+          }
+     }
+
+     &__cart {
+          padding-left: 13px;
+          display: flex;
+          align-items: center;
+          color: #fff;
+          cursor: pointer;
+
+          &::before {
+               content: "";
+               display: inline-block;
+               width: 16px;
+               height: 16px;
+               margin-right: 8px;
+               vertical-align: middle;
+               background: url("../../resources/icons/Header/cart.svg") no-repeat center/cover;
+          }
+
+          @media (max-width:520px) {
+               font-size: 10px;
+               padding: 0;
+          }
+
+     }
+}
