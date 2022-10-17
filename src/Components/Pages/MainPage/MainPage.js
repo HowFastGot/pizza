@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import fetchCarts from "../../../redux/actions/mainPageActions";
-import { useHttp } from "../../../hooks/http.hook"
+import { useHttp } from "../../../../api/http.hook"
 import { mainPageSelector } from "../../../redux/reducers-actions/mainPageSlice";
 import { cartAddNewCarts } from "../../../redux/reducers-actions/cartSlice";
 
