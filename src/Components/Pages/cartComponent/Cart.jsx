@@ -14,16 +14,18 @@ const Cart = () => {
 
      const dispatch = useDispatch();
 
-     const renderPizzaRowComponents = (arrComponents) => {
-          let temp = null;
+     const renderPizzaRowComponents = (itemsCarts) => {
 
-          return arrComponents.map((item, index) => {
-               const bliaArr = arrComponents.filter((blia) => blia.id === item.id);
-               const count = bliaArr.length;
+          const stack = [];
 
-               if (item.id === temp) return;
+          return itemsCarts.map((item, index) => {
 
-               temp = item.id;
+               const similarItemsArr = itemsCarts.filter(similarItem => similarItem.id === item.id);
+               const count = similarItemsArr.length;
+
+               if (stack.includes(item.id)) return;
+
+               stack.push(item.id);
                return <PizzaRowCart {...item} count={count} />
           });
      }

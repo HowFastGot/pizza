@@ -6,14 +6,13 @@ const PizzaRowCart = ({ id, imageUrl, name, price, size, type, count }) => {
      const dispatch = useDispatch();
 
      function handleDelitingByID(id) {
-
           if (!window.confirm("Delete the pizza-block ?")) return;
 
           dispatch(cartDeleteByID(id))
      };
 
-     const handeAddPizzaToList = (...args) => {
-          dispatch(cartAddToList(...args))
+     const handeAddPizzaToList = (obj) => {
+          dispatch(cartAddToList(obj))
      }
 
      return (
@@ -43,7 +42,7 @@ const PizzaRowCart = ({ id, imageUrl, name, price, size, type, count }) => {
                <div className="product-component__total-prise">$ {price * count}</div>
                <button
                     className="product-component__close-btn"
-                    onClick={() => handleDelitingByID()}
+                    onClick={() => handleDelitingByID(id)}
                >
                </button>
           </div>

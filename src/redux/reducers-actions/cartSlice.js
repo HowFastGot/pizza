@@ -23,6 +23,7 @@ const cartSlice = createSlice({
                state.totalAmount = 0;
           },
           cartDeleteByID: (state, action) => {
+               console.log(action.payload)
                state.items = state.items.filter(item => item.id !== action.payload);
                state.totalCount = state.items.length;
                state.totalAmount = state.items.reduce((acc, item) => {
@@ -37,12 +38,14 @@ const cartSlice = createSlice({
                }, 0)
           },
           cartDecreaseCount: (state, action) => {
-               const pizzaTypeArr = state.items.filter(item => item.id === action.payload);
 
-               if (pizzaTypeArr.length === 1) return;
-               pizzaTypeArr.pop();
+               const cartItems = state.items.filter((item) => item.id === action.payload)
 
-               state.items = [...pizzaTypeArr].concat(state.items.filter(item => item.id !== action.payload))
+               if (cartItems.length === 1) return;
+
+               state.items.splice(state.items.indexOf(cartItems[0]), 1);
+
+               state.items = [...state.items];
                state.totalCount = state.items.length;
                state.totalAmount = state.items.reduce((acc, item) => {
                     return item.price + acc;
