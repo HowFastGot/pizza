@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { v4 as uuid } from 'uuid';
 import classNames from 'classnames';
 
-import { useSelector, useDispatch } from "react-redux";
-import { onChangeActiveSize, onChangeActiveType } from "../../redux/reducers-actions/pizzaCartSlice";
+import { useSelector } from "react-redux";
+
 
 
 const PizzaCart = ({ id, imageUrl, name, sizes, price, types, onClickAddPizza }) => {
@@ -27,6 +27,7 @@ const PizzaCart = ({ id, imageUrl, name, sizes, price, types, onClickAddPizza })
                     <button
                          className={sizesClass}
                          onClick={() => setActiveSize(size)}
+                         key={uuid()}
                     >
                          {size}cм
                     </button>

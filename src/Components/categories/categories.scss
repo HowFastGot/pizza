@@ -21,7 +21,11 @@
           &:hover,
           &.active {
                background-color: #000;
-               color: #ffff;
+
+               button {
+                    color: #ffff;
+               }
+
           }
      }
 

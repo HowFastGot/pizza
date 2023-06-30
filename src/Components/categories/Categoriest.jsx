@@ -1,4 +1,5 @@
 import { v4 as uuid } from 'uuid';
+
 import classNames from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -19,17 +20,21 @@ const Categories = ({ categories }) => {
                });
 
                return (
-                    <>
-                         <li
-                              className={liClass}
-                              key={uuid()}
-                              onClick={(e) => {
+
+                    <li
+                         className={liClass}
+                         key={uuid()}
+                    >
+                         <button
+                              onClick={() => {
                                    dispatch(categoriesChange(i))
                               }}
+                              key={uuid()}
                          >
                               {category}
-                         </li>
-                    </>
+                         </button>
+                    </li>
+
                );
           });
      };
@@ -39,7 +44,7 @@ const Categories = ({ categories }) => {
                {
                     renderItems(categories)
                }
-          </ul>
+          </ul >
      )
 };
 

@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import classNames from "classnames";
+import { v4 as uuid } from 'uuid';
 
 import { onClickOnFilterOption, onClickOnSelectBlock, onChangeFilterBy } from "../../redux/reducers-actions/filtersSlice";
 
@@ -13,6 +14,13 @@ const AppFilters = ({ filtersList }) => {
      const { selectIsOpen, activeFilter } = useSelector(({ filters }) => filters);
 
      useEffect(() => {
+
+          const onDocumentClick = (e) => {
+               // if (e.target === selectBlockRef.current) return;
+
+               dispath(onClickOnSelectBlock(false));
+          }
+
           document.addEventListener("click", onDocumentClick);
 
           return () => {
@@ -20,18 +28,12 @@ const AppFilters = ({ filtersList }) => {
           }
 
 
-     }, []);
+     });
 
      const selectClasses = classNames("filter-row__select-block select-block", {
           "active": selectIsOpen
      });
 
-     const onDocumentClick = (e) => {
-
-          if (e.path.includes(selectBlockRef.current)) return;
-
-          dispath(onClickOnSelectBlock(false));
-     }
 
      const renderFilters = (arr) => {
           return arr.map((item, i) => {
@@ -46,6 +48,7 @@ const AppFilters = ({ filtersList }) => {
                               dispath(onClickOnFilterOption(i));
                               dispath(onChangeFilterBy(item.filter, i))
                          }}
+                         key={uuid()}
                     >
                          {item.name}
                     </button>
@@ -56,10 +59,18 @@ const AppFilters = ({ filtersList }) => {
      return (
           <>
                <div
+                    role="button"
+                    tabIndex={0}
                     className={selectClasses}
                     ref={selectBlockRef}
                     onClick={(e) => {
                          dispath(onClickOnSelectBlock(!selectIsOpen))
+                    }
+                    }
+                    onKeyDown={(e) => {
+                         if (e.code === "ENTER") {
+                              dispath(onClickOnSelectBlock(!selectIsOpen));
+                         }
                     }
                     }>
                     <div className="select-block__parent">

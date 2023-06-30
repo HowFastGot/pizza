@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { v4 as uuidv4 } from 'uuid';
 
 import fetchCarts from "../../../redux/actions/mainPageActions";
 import { useHttp } from "../../../hooks/http.hook"
@@ -26,7 +27,7 @@ const MainPage = () => {
 
      useEffect(() => {
           dispatch(fetchCarts(request))
-     }, []);
+     }, [request, dispatch]);
 
      const onClickAddPizza = (pizzaObj) => {
           dispatch(cartAddNewCarts(pizzaObj))
@@ -35,7 +36,10 @@ const MainPage = () => {
      const renderCarts = (arr = []) => {
           return arr.map((item) => {
                return (
-                    <PizzaCart {...item} onClickAddPizza={(obj) => onClickAddPizza(obj)} />
+                    <PizzaCart {...item}
+                         key={uuidv4()}
+                         onClickAddPizza={(obj) => onClickAddPizza(obj)}
+                    />
                );
           })
      };
@@ -44,12 +48,12 @@ const MainPage = () => {
           <>
                <AppHeader mainPage />
                <main className=" _container">
-                    <h3 class="page__title-pizza">Все пиццы</h3>
+                    <h3 className="page__title-pizza">Все пиццы</h3>
                     <div className="page__filter-row filter-row">
                          <Categories categories={categories} />
                          <AppFilters filtersList={filters} />
                     </div>
-                    <div class="page__pizza-grid grid-pizza">
+                    <div className="page__pizza-grid grid-pizza">
                          {
                               cartsLoadingStatus === "loading" ? <NetflixLoader /> : renderCarts(carts)
                          }

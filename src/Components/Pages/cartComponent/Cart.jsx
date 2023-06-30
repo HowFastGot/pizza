@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { AppHeader, PizzaRowCart } from "../../transponder";
 import { cartClearIt } from "../../../redux/reducers-actions/cartSlice";
+import { v4 as uuidv4 } from 'uuid';
 
 import image from "../../../resources/empty-cart/1.jpg";
 
@@ -16,17 +17,12 @@ const Cart = () => {
 
      const renderPizzaRowComponents = (itemsCarts) => {
 
-          const stack = [];
-
           return itemsCarts.map((item, index) => {
 
                const similarItemsArr = itemsCarts.filter(similarItem => similarItem.id === item.id);
                const count = similarItemsArr.length;
 
-               if (stack.includes(item.id)) return;
-
-               stack.push(item.id);
-               return <PizzaRowCart {...item} count={count} />
+               return <PizzaRowCart {...item} count={count} key={uuidv4()} />
           });
      }
 
@@ -73,7 +69,7 @@ const Cart = () => {
           } else {
                return (
                     <div className="page__content-empty empty-content">
-                         <h3 className="empty-content__title">Корзина пустая <span>😕</span></h3>
+                         <h3 className="empty-content__title">Корзина пустая <span role="img" aria-label="sady emojy">😕</span></h3>
                          <div className="empty-content__text">
                               Вероятней всего, вы не заказывали ещё пиццу.
                               Для того, чтобы заказать пиццу, перейди на главную страницу.
